@@ -16,8 +16,8 @@
 // when AI label is HIGH, the output from pin 4 will be low and vice versa.
 #define D4 2
 
-const char* ssid = "{custom}";
-const char* password = "{custom}";
+const char* ssid = "Xperia Z3 Compact_f6f6";
+const char* password = "123lol123";
 
 // The actual pins that display information on the board (see comments above).
 int pin1 = D0;
@@ -83,7 +83,6 @@ void loop() {
   else if (req.indexOf("/off") != -1)
     val = 1;
   else {
-    Serial.println("invalid request");
     client.stop();
     return;
   }
@@ -94,9 +93,7 @@ void loop() {
   client.flush();
 
   // Prepare the response
-  String s = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE HTML>\r\n<html>\r\nGPIO is now ";
-  s += (val)?"high":"low";
-  s += "</html>\n";
+   String s = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n 1 2\n ";
 
   // Send the response to the client
   client.print(s);
